@@ -1,0 +1,130 @@
+/* Copia adaptada de ZtartCMS/public/css/zmedia.css */
+/* Zbox Lightbox */
+.zbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.88));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
+}
+
+.zbox-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.zbox-overlay img {
+    max-width: min(92vw, 1200px);
+    max-height: 90vh;
+    border-radius: 1.25rem;
+    border: 2px solid rgba(59, 130, 246, 0.35);
+    background: rgba(2, 6, 23, 0.65);
+    box-shadow: 0 40px 80px rgba(2, 6, 23, 0.7);
+}
+
+.zbox-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.55);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zbox-close-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 55px rgba(59, 130, 246, 0.4);
+}
+
+@media (max-width: 640px) {
+    .zbox-overlay::before {
+        inset: 1.5rem;
+        border-radius: 1rem;
+    }
+
+    .zbox-close-btn {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+    }
+
+    .zbox-overlay img {
+        border-radius: 1rem;
+    }
+}
+
+/* Zplayer base */
+.zplayer {
+    position: relative;
+    margin: 2rem 0;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.9));
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow: 0 35px 70px rgba(2, 6, 23, 0.45);
+}
+
+.zplayer::after {
+    content: '';
+    position: absolute;
+    inset: 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    pointer-events: none;
+}
+
+.zplayer video,
+.zplayer iframe,
+.zplayer audio {
+    width: 100%;
+    display: block;
+    border: none;
+    background: #020617;
+}
+
+.zplayer video,
+.zplayer iframe {
+    min-height: 320px;
+}
+
+.zplayer.zplayer-audio {
+    padding: 1.25rem;
+    background: rgba(2, 6, 23, 0.92);
+}
+
+.zplayer.zplayer-audio audio {
+    width: 100%;
+}
+
+.zplayer-yt iframe {
+    aspect-ratio: 16 / 9;
+    border-radius: 1rem;
+}
+
+@media (max-width: 768px) {
+    .zplayer::after {
+        inset: 0.75rem;
+    }
+
+    .zplayer video,
+    .zplayer iframe {
+        min-height: 240px;
+    }
+}

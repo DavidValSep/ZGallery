@@ -1,0 +1,25 @@
+<?
+
+// TRACK YOUR PHP IN FIRECONSOLE
+// http://www.firephp.org/
+require_once('includes/FirePHP.class.php');
+require_once('includes/fb.php');
+include('config.php');
+include('includes/dbcon.php');
+$ruta_actual = $_SERVER['PHP_SELF'];
+$cliente = preg_replace('([^A-Za-z0-9])', '', dirname($ruta_actual));
+if($isname != $cliente){ header('Location: install.php');};
+$firephp = FirePHP::getInstance(true);
+ob_start();
+
+fb ("hello firePHP");
+
+        $listasel = "";
+        $query = 'SELECT * FROM selected WHERE client ="'.$cliente.'" AND status = "1"';
+        $result = mysql_query($query) or die('Consulta fallida: ' . mysql_error());
+        while($row=mysql_fetch_array($result)){ 
+        $listasel .= $row[name].'<br>';
+        };
+        mysql_free_result($result);
+echo $listasel;
+  ?>
